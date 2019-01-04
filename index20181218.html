@@ -1,0 +1,1068 @@
+<html>
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery Mobile</title>
+<link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
+<script src="jquery.js"></script>
+<script src="jquery.mobile.js"></script>
+<style>
+.div_auto {
+  width: 50%; 
+  margin: 0 auto;  
+  text-align: center;  
+} 
+.img_auto {
+  margin: auto ;   
+}
+.btn1{
+  margin: 0 auto;  
+  text-align: center;
+}
+.img1 {
+  width:100%;
+  margin: 0 auto;  
+}
+</style>
+<script>
+  $(document).on("pageshow","#page5",function(){
+    document.getElementById("demo").innerHTML = "pageshow頁面顯示";
+    test() ;
+});
+</script>
+<script>
+function test() {
+    document.getElementById("demo").innerHTML = "test頁面顯示";
+
+    var output = $('#placeList');
+
+    $.ajax({
+        url: 'http://www.mysite.com/json.php',
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        timeout: 5000,
+        success: function(data, status){
+            $.each(data, function(i,item){
+                var place = '<li><a href="">'+item.name+'<span class="ui-li-count">'
+                + item.checkins+'</span></a></li>';
+
+                output.append(place);
+            });
+            $('#placeList').listview('refresh');
+        },
+        error: function(){
+            output.text('There was an error loading the data.');
+        }
+    });
+  }
+</script>
+<script>
+function ScrollTo() {
+$('html,body').animate({
+scrollTop: $('#top').offset().top}, 1000);
+}
+</script>
+<script type="text/javascript" src="js/tw_cn.js"></script>
+<style type="text/css">
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    width:99%;
+    margin: auto;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+<a id="top"></a>
+
+<!-- Page: home  -->
+<div data-role="page" id="home">
+
+   <div data-role="header" data-position="fixed" data-theme="c">
+      <h1>親親app</h1>
+   <div style="width: 22px; position: fixed;top: 1px;right: 80px;z-index:500;">
+      <a id="translateLink" href="javascript:translatePage();" data-role="button" ><font style="font-size:19px">简体</font></a>
+   </div>      
+    <a is="button" class="ui-btn ui-btn-icon-left ui-icon-bars" href="#left-menu" style="padding:18px; background:none;"></a>
+    <a is="button" class="ui-btn ui-btn-icon-left ui-icon-bullets" style="padding:18px; background:none;" href="#right-menu"></a>
+  </div>    
+  <div is="dragable" id="left-menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" data-theme="c">
+    <div is="dragable">這是從左側展開的內容</div>
+      <div>
+        <ul data-role="listview">
+          <li><a href="#" class="ui-btn ui-icon-search ui-btn-icon-left">左側One</a>
+               <ul data-role="listview">
+                  <li><a href="#page4" data-transition="slide">jquerymobile 元件</a></li>
+                  <li><a href="#page5" data-transition="flip">pageshow</a></li>
+                  <li><a href="#page1" data-transition="flip">蝦皮親親商城上線嚕</a></li>
+
+               </ul>
+          </li>
+          <li><a href="#page1" class="ui-btn ui-icon-search ui-btn-icon-left">Search</a></li>
+          <li><a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">主页</a></li>
+          <li><a href="#" class="ui-btn ui-icon-eye ui-btn-icon-left">左側Four</a></li>
+          <li><a href="#">左側Five</a></li>    
+        </ul>
+      </div>     
+  </div>
+    <div is="dragable" id="right-menu" data-role="panel" data-position="right" data-position-fixed="false"  data-theme="b">
+    <div is="dragable">這是從右側展開的內容</div>
+      <div>
+        <ul>
+          <li>右側One</li>
+               <ul>
+                  <li><a href="#">右側One1</a></li>
+                  <li><a href="#">右側One2</a></li>
+
+               </ul>
+          <li><a href="#">右側Two</a></li>
+          <li><a href="#">右側Three</a></li>
+          <li><a href="#">右側Four</a></li>
+          <li><a href="#">右側Five</a></li>    
+        </ul>
+      </div>    
+  </div>          
+
+<div data-role="navbar">
+  <ul>
+    <li><a href="#home" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left" class="ui-btn-active">主页</a></li>
+    <li><a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-top">Two</a></li>
+    <li><a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-bottom">Three</a></li>
+    <li><a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-right">Four</a></li>
+    <li><a href="#">Five</a></li>    
+  </ul>
+</div>    
+   <div data-role="main" class="ui-content">
+      <div><img style="margin: auto;width:99%" src="images/title.png">
+      </div>      
+      <p>最新消息</p>
+      <p><a href="#page4" data-role="button" data-transition="slide" style="background-color: #ff0"><font color="blue">jquerymobile 元件</font></a></p>
+
+      <p><a href="#page1" data-role="button" data-transition="flip" style="background-color: #ff0"><font color="blue">蝦皮親親商城上線嚕</font></a></p>
+      <p><a href="#page5" data-role="button" data-transition="flip" style="background-color: #ff0"><font color="blue">pageshow</font></a></p>
+
+      <p><a href="#page2" data-role="button" data-transition="flow " style="background-color: #ff0"><font color="blue">3900元三天兩夜HIGH翻綠島</font></a></p>
+<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">弹窗中使用表单</a>
+<form>
+<div class="ui-field-contain">  
+<span>縣市:</span>
+<select name="id_cnt" id="id_cnt">
+       <option value="">全部</option>
+       <option value="宜蘭縣">宜蘭縣</option>
+       <option value="花蓮縣">花蓮縣</option>
+       <option value="台北市">台北市</option>
+           <option value="台中市">台中市</option>
+           <option value="基隆市">基隆市</option>
+           <option value="台南市">台南市</option>
+           <option value="高雄市">高雄市</option>
+           <option value="新北市">新北市</option>
+           <option value="桃園縣">桃園縣</option>
+           <option value="嘉義市">嘉義市</option>
+           <option value="新竹縣">新竹縣</option>
+           <option value="苗栗縣">苗栗縣</option>
+           <option value="南投縣">南投縣</option>
+           <option value="彰化縣">彰化縣</option>
+           <option value="新竹市">新竹市</option>
+           <option value="雲林縣">雲林縣</option>
+           <option value="嘉義縣">嘉義縣</option>
+           <option value="屏東縣">屏東縣</option>
+           <option value="台東縣">台東縣</option>
+           <option value="金門縣">金門縣</option>
+           <option value="澎湖縣">澎湖縣</option>
+           <option value="連江縣">連江縣</option>       
+</select>
+  <span>旅宿:</span>
+  <select id="id_type">
+      <option value="">全部旅宿</option>
+      <option value="民宿">民宿</option>
+      <option value="旅館">Hotel</option>
+      <option value="休閒農場">休閒農場</option>
+  </select>
+  <span>房型:</span>
+  <select id="id_room">
+      <option value="">全部房型</option>
+      <option value="2人房">2人房</option>
+      <option value="4人房">4人房</option>
+      <option value="6人房">6人房</option>
+      <option value="8人房">8人房</option>
+      <option value="10人房">10人房</option>
+      <option value="16人房">16人房</option>
+ </select>
+  <span>起止價格:</span>
+<input type="text" name="id_low" id="id_low" value="0">
+  <span>~</span>
+<input type="text" name="id_hi" id="id_hi" value="10000">
+</div>
+</form>
+<button class="ui-btn" id="target">動態Ajax-json新增內容</button>
+<div class="row" style="width:100%;background-color:#FFFFF0;margin: auto;">
+   <div id="div1" style="font-size:20px;width: 100%; margin: auto;">
+   </div>
+</div>
+<div id="div2">
+</div>
+<div id="div3">
+</div>
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+      <form method="post" action="index.html">
+        <div>
+          <h3>登录信息</h3>
+          <label for="usrnm" class="ui-hidden-accessible">用户名:</label>
+          <input type="text" name="user" id="usrnm" placeholder="用户名">
+          <label for="pswd" class="ui-hidden-accessible">密码:</label>
+          <input type="password" name="passw" id="pswd" placeholder="密码">
+          <label for="log">保存登录</label>
+          <input type="checkbox" name="login" id="log" value="1" data-mini="true">
+          <input type="submit" data-inline="true" value="登录">
+        </div>
+<label for="points">进度:</label>
+      <input type="range" name="points" id="points" value="50" min="0" max="100" data-theme="d">        
+      </form>
+    </div>
+</div>       
+<span is="span" id="status">狀態顯示</span>
+    <br>
+    <br>
+    <div is="dragable" id="tapthis" class="test">tap</div>
+    <div is="dragable" id="tapholdthis" class="test">tap hold</div>
+    <div is="dragable" id="swipethis" class="test">swpie</div>
+    <div is="dragable" id="swipeleftthis" class="test">swipe left</div>
+    <div is="dragable" id="swiperightthis" class="test">swipe right</div>
+    <br>
+ 
+   <div class="videoWrapper">
+    <iframe width="560" height="349" src="https://www.youtube.com/embed/wUPPkSANpyo" frameborder="0" allowfullscreen></iframe>
+   </div>  
+   </div> 
+   <br> 
+   <br>
+   <div data-role="footer" data-position="fixed">
+      <h4>歡迎光臨</h4>
+      <div style="text-align: center">
+      <a href="https://line.me/ti/p/Hxpk8X1eWl" class="ui-btn ui-icon-plus ui-btn-icon-left">加 Line 好友</a>
+      <a href="http://m.facebook.com/twqinqin/" class="ui-btn ui-icon-plus ui-btn-icon-left">連結 FB 官網</a>
+      </div> 
+   </div>
+</div>
+   
+<div data-role="page" id="page5">
+
+   <div data-role="header" data-add-back-btn="true" data-back-btn-text="上一頁" style="position:fixed;left:0px;top:1px;;width:100%;z-index: 100">
+      <h1>pageshow</h1>
+   <br>
+   <br>
+
+   <div data-role="main" class="ui-content">
+      <div><span id="demo"></span></div>
+      <div class="row" style="width:100%;background-color:#FFFFF0;margin: auto;">
+         <div id="div1" style="font-size:20px;width: 100%; margin: auto;">
+         </div>
+      </div>        
+      <div id="div2">
+      </div>        
+   </div>
+   <br>
+   <br>
+   <div data-role="footer" style="position:fixed;left:0px;bottom:1px;width:100%;z-index: 100">
+      <h4>pageshow-bottom</h4>
+   </div>
+</div>
+</div>
+<div data-role="page" id="page4">
+
+   <div data-role="header" data-add-back-btn="true" data-back-btn-text="上一頁" style="position:fixed;left:0px;top:1px;;width:100%;z-index: 100">
+      <h1>jquery mobile 元件</h1>
+   </div>
+   <br>
+   <br>
+   <div data-role="main" class="ui-content">
+
+    <div style="text-align: center">
+    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">显示弹窗</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content">
+      <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+       <p>我在右上角有个关闭按钮</p>
+      <p><b>提示:</b> 你也可以通过点击弹窗外的区域来关闭弹窗。</p>
+    </div>    
+    <a href="#myPopup1" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">显示弹窗1</a>
+
+    <div data-role="popup" id="myPopup1" class="ui-content">
+      <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+       <p>我在右上角有个关闭按钮</p>
+      <p><b>提示:</b> 你也可以通过点击弹窗外的区域来关闭弹窗。</p>
+    </div>
+    </div>
+
+    <a is="button" class="ui-btn" data-rel="popup" href="#popup1">Popup 1 &nbsp;( default )</a>
+    <div is="dragable" data-role="popup" id="popup1">
+       <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+       <p> popup 1我在右上角有个关闭按钮</p>
+      <p><b>提示:</b> 你也可以通过点击弹窗外的区域来关闭弹窗。</p>
+    </div> 
+
+    <a is="button" class="ui-btn" href="#popup2" data-rel="popup" data-transition="pop">Popup 2 &nbsp;( pop )</a>
+    <div is="dragable" data-role="popup" id="popup2">大家好我是 popup 2</div>
+    <a is="button" class="ui-btn" href="#popup3" data-rel="popup" data-transition="slide">Popup 3 &nbsp;( slide )</a>
+    <div is="dragable" data-role="popup" id="popup3">大家好我是 popup 3</div>
+
+
+<div class="ui-field-contain">
+  <label for="gk-104mhHQ">Title</label>
+  <select id="gk-104mhHQ">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+    <option value="option4">Option 4</option>
+
+  </select>
+</div>   
+
+<div class="ui-field-contain">
+  <label for="gk-113BeiH">日期選擇</label>
+  <input id="gk-113BeiH" type="date">
+</div>
+
+<div class="ui-field-contain">
+  <label for="#text_id">Title</label>
+<input type="text" name="" id="#text_id">
+</div>
+
+<div class="ui-field-contain">
+  <label for="#textarea_id">Title(textarea)</label>
+  <textarea name="" id="#textarea_id"></textarea>
+</div>
+
+<div class="ui-field-contain">
+  <label for="#search_id">Title(search)</label>
+  <input type="search" name="" id="#search_id">
+</div>
+
+<form>
+  <fieldset data-role="controlgroup" data-type="horizontal">
+    <legend>Horizontal:</legend>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
+    <label for="radio-choice-h-2a">One</label>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
+    <label for="radio-choice-h-2b">Two</label>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other">
+    <label for="radio-choice-h-2c">Three</label>
+  </fieldset>
+</form>
+
+<form>
+  <fieldset data-role="controlgroup" data-type="vertical">
+    <legend>vertical:</legend>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
+    <label for="radio-choice-h-2a">One</label>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
+    <label for="radio-choice-h-2b">Two</label>
+    <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other">
+    <label for="radio-choice-h-2c">Three</label>
+  </fieldset>
+</form>
+
+<form>
+  <fieldset data-role="controlgroup">
+    <legend>checkbox(Vertical):</legend>
+    <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+    <label for="checkbox-v-2a">One</label>
+    <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+    <label for="checkbox-v-2b">Two</label>
+    <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+    <label for="checkbox-v-2c">Three</label>
+  </fieldset>
+</form>
+
+<form>
+  <label for="flip-2">Flip toggle switch:</label>
+  <select name="flip-2" id="flip-2" data-role="flipswitch" data-theme="b">
+    <option value="off">關</option>
+    <option value="on">開</option>
+  </select>
+</form>
+
+<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+      <thead>
+        <tr>
+          <th data-priority="2">Rank</th>
+          <th>Movie Title</th>
+          <th data-priority="3">Year</th>
+          <th data-priority="1"><abbr title="Rotten Tomato Rating">Rating</abbr>
+          </th>
+          <th data-priority="5">Reviews</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>1</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Citizen_Kane" data-rel="external">Citizen Kane</a>
+          </td>
+          <td>1941</td>
+          <td>100%</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Casablanca_(film)" data-rel="external">Casablanca</a>
+          </td>
+          <td>1942</td>
+          <td>97%</td>
+          <td>64</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/The_Godfather" data-rel="external">The Godfather</a>
+          </td>
+          <td>1972</td>
+          <td>97%</td>
+          <td>87</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)" data-rel="external">Gone with the Wind</a>
+          </td>
+          <td>1939</td>
+          <td>96%</td>
+          <td>87</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)" data-rel="external">Lawrence of Arabia</a>
+          </td>
+          <td>1962</td>
+          <td>94%</td>
+          <td>87</td>
+        </tr>
+        <tr>
+          <th>6</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Dr._Strangelove" data-rel="external">Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb</a>
+          </td>
+          <td>1964</td>
+          <td>92%</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <th>7</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/The_Graduate" data-rel="external">The Graduate</a>
+          </td>
+          <td>1967</td>
+          <td>91%</td>
+          <td>122</td>
+        </tr>
+        <tr>
+          <th>8</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)" data-rel="external">The Wizard of Oz</a>
+          </td>
+          <td>1939</td>
+          <td>90%</td>
+          <td>72</td>
+        </tr>
+        <tr>
+          <th>9</th>
+          <td>
+            <a href="http://en.wikipedia.org/wiki/Singin%27_in_the_Rain" data-rel="external">Singin' in the Rain</a>
+          </td>
+          <td>1952</td>
+          <td>89%</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <th>10</th>
+          <td class="title">
+            <a href="http://en.wikipedia.org/wiki/Inception" data-rel="external">Inception</a>
+          </td>
+          <td>2010</td>
+          <td>84%</td>
+          <td>78</td>
+        </tr>
+      </tbody>
+    </table>
+
+<ul data-role="listview" data-inset="true" data-divider-theme="a" data-filter="true">
+  <li data-role="list-divider">Mail</li>
+  <li>
+    <a href="#">Inbox</a>
+  </li>
+  <li>
+    <a href="#">Outbox</a>
+  </li>
+  <li data-role="list-divider">Contacts</li>
+  <li>
+    <a href="#">Friends</a>
+  </li>
+  <li>
+    <a href="#">Work</a>
+  </li>
+</ul>
+
+<div data-role="navbar">
+  <ul>
+    <li><a data-theme="a">Theme A</a></li>
+    <li><a data-theme="b">Theme B</a></li>
+  </ul>
+</div>
+
+<div>
+<a href="#" class="ui-btn ui-btn-a">Theme A</a>
+<a href="#" class="ui-btn ui-btn-b">Theme B</a>
+</div>
+
+<a href="#" class="ui-btn">Anchor</a>
+<button class="ui-btn" ui-btn-icon-right ui-icon-arrow-d-l">Button</button>
+<a href="#" class="ui-btn ui-btn-inline">Anchor</a>
+<button class="ui-btn ui-btn-inline">Button</button>
+ <button class="ui-btn ui-btn-icon-left ui-icon-action">action</button>
+<button class="ui-btn ui-btn-icon-left ui-icon-alert">alert</button>
+<button class="ui-btn ui-btn-icon-up ui-icon-arrow-d">arrow-d</button>
+<button class="ui-btn ui-btn-icon-right ui-icon-arrow-d-l">arrow-d-l</button>
+<button class="ui-btn ui-btn-icon-bottom ui-icon-arrow-d-r">arrow-d-r</button>
+<button class="ui-btn ui-btn-icon-left ui-icon-arrow-l">arrow-l</button>
+
+<div class="ui-grid-c">
+  <div class="ui-block-a">Block A</div>
+  <div class="ui-block-b">Block B</div>
+  <div class="ui-block-c">Block C</div>
+  <div class="ui-block-d">Block D</div>
+</div> 
+
+<div class="ui-grid-c">
+  <div class="ui-block-a">Block 1A</div>
+  <div class="ui-block-b">Block 1B</div>
+  <div class="ui-block-c">Block 1C</div>
+  <div class="ui-block-d">Block 1D</div>
+</div> 
+</div> 
+   <br>
+   <br>
+   <div data-role="footer" style="position:fixed;left:0px;bottom:1px;width:100%;z-index: 100">
+      <h4>超過250件旅遊商品歡迎選購</h4>
+   </div>
+
+</div>
+
+<!-- Page: page1 -->
+<div data-role="page" id="page1">
+
+   <div data-role="header" data-theme="c" data-add-back-btn="true" data-back-btn-text="上一頁" style="position:fixed;left:0px;top:1px;;width:100%;z-index: 100">
+      <h1>蝦皮親親商城上線嚕</h1>
+   </div>
+   <br>
+   <br>
+
+   <div data-role="main" class="ui-content">
+      <div><img style="margin: auto;width:99%" src="images/comp_title4.jpg">
+      </div>
+      <p>首波主打「早鳥限量1500元起宜蘭童玩節住宿+早餐+童玩門票+台灣好玩卡」，只要花1500元，即可獲得價值超過3700元的旅遊商品。
+
+心動了嗎? 
+
+現在就上<a href="https://shopee.tw/tw77tw77">【蝦皮親親商城】</a></p>
+   </div>
+   <br>
+   <br>
+   <div data-role="footer" style="position:fixed;left:0px;bottom:1px;width:100%;z-index: 100">
+      <h4>超過250件旅遊商品歡迎選購</h4>
+   </div>
+
+</div>
+
+
+<!-- Page: page2 -->
+<div data-role="page" id="page2">
+
+   <div data-role="header" data-theme="e" data-add-back-btn="true" data-back-btn-text="上一頁" style="position:fixed;left:0px;top:1px;;width:100%;z-index: 100">
+      <h1>3900元三天兩夜HIGH翻綠島</h1>
+   </div> 
+   <br>
+   <br>
+
+   <div data-role="main" class="ui-content">
+      <div><img style="margin: auto;width:99%" src="images/gi1.jpg">
+      </div>      
+      <p>    花東，一直以來都被視為是台灣的處女地，先不論16世紀「福爾摩沙」的名稱確切的來由為何，但是壯麗的山巒及廣闊的海洋，與豐富的大地住民文化，在台灣的東部交織出美麗且動聽的故事。 </p>
+
+     <p>這次，交通部觀光局東海岸國家風景區管理處與臺灣親親旅行社合作，希望藉由東海岸大地藝術節的活動，把宜花東美麗的故事，繼續向海外延伸，分享給更多喜歡台灣、體驗生活的朋友，繼而將這份對土地的感動，傳遞到世界的每個角落。</p>
+
+      <p>由於台灣四面環海，這次我們特別針對海洋文化，安排了三天兩夜的【綠島海洋生態之旅】及四天三夜的【等待飛魚人之島】系列行程，趁著暑假，一起徜徉在蔚藍的太平洋中，不僅消暑，也可以了解綠島的監獄文化、蘭嶼的原民文化，甚至還可以一探海底的美麗新世界！</p>
+
+      <p>當然，我們更希望全家大小可以一起同樂，來台東度過一個輕鬆且悠閒的假期。因此，三天兩夜的【月光．海．大地藝術節饗宴】絕對是不二之選！由來自世界各地著名的表演團隊，陪伴大家度過一個不一樣的夜晚，看著月光自海平面流瀉而出，動人樂音就像是美食與調味料般，互相融合，觸動著每個人的五官感受，是多麼的美妙啊！<a href="#page3"><font color="blue">=>四天三夜HIGH翻綠島</font></a></p>
+
+      <p>暑假即將到來，如果還不知道怎麼安排旅遊行程的朋友，歡迎跟著臺灣親親旅遊的腳步，一起HIGH翻東海岸！讓我們在繁忙的工作之餘，能發現這片土地的美好，並且發自內心地大聲呼喊：「我愛台灣！」Ilha Formosa！</p>
+
+      <p>以上所有行程均獨家贈送2018東海岸大地藝術節『大地護照』，內含超過5萬元以上的優惠券和折價券，相關優惠詳情，請上2018東海岸大地藝術節官網《2018大地護照宜蘭店家優惠一覽》查閱：<a href="https://www.teclandart.tw/zh/2018ilan/">https://www.teclandart.tw/zh/2018ilan/</a></p>
+   </div> 
+   <br>
+   <br>
+   <div data-role="footer" style="position:fixed;left:0px;bottom:1px;width:100%;z-index: 100">
+      <h4>【限時推出】</h4>
+   </div>
+
+</div>
+
+<div data-role="page" id="page3">
+
+   <div data-role="header" data-theme="f" data-add-back-btn="true" data-back-btn-text="上一頁" style="position:fixed;left:1px;top:0px;;width:100%;z-index: 100">
+      <h1>3900元三天兩夜HIGH翻綠島</h1>
+   </div> 
+   <br>
+   <div data-role="main" class="ui-content">
+      <div><img style="margin: auto;width:99%" src="images/gi2.jpg">
+      </div>      
+      <p>    花東，一直以來都被視為是台灣的處女地，先不論16世紀「福爾摩沙」的名稱確切的來由為何，但是壯麗的山巒及廣闊的海洋，與豐富的大地住民文化，在台灣的東部交織出美麗且動聽的故事。 </p>
+
+     <p>這次，交通部觀光局東海岸國家風景區管理處與臺灣親親旅行社合作，希望藉由東海岸大地藝術節的活動，把宜花東美麗的故事，繼續向海外延伸，分享給更多喜歡台灣、體驗生活的朋友，繼而將這份對土地的感動，傳遞到世界的每個角落。</p>
+
+      <p>由於台灣四面環海，這次我們特別針對海洋文化，安排了三天兩夜的【綠島海洋生態之旅】及四天三夜的【等待飛魚人之島】系列行程，趁著暑假，一起徜徉在蔚藍的太平洋中，不僅消暑，也可以了解綠島的監獄文化、蘭嶼的原民文化，甚至還可以一探海底的美麗新世界！</p>
+
+      <p>當然，我們更希望全家大小可以一起同樂，來台東度過一個輕鬆且悠閒的假期。因此，三天兩夜的【月光．海．大地藝術節饗宴】絕對是不二之選！由來自世界各地著名的表演團隊，陪伴大家度過一個不一樣的夜晚，看著月光自海平面流瀉而出，動人樂音就像是美食與調味料般，互相融合，觸動著每個人的五官感受，是多麼的美妙啊！</p>
+
+      <p>暑假即將到來，如果還不知道怎麼安排旅遊行程的朋友，歡迎跟著臺灣親親旅遊的腳步，一起HIGH翻東海岸！讓我們在繁忙的工作之餘，能發現這片土地的美好，並且發自內心地大聲呼喊：「我愛台灣！」Ilha Formosa！</p>
+
+      <p>以上所有行程均獨家贈送2018東海岸大地藝術節『大地護照』，內含超過5萬元以上的優惠券和折價券，相關優惠詳情，請上2018東海岸大地藝術節官網《2018大地護照宜蘭店家優惠一覽》查閱：<a href="https://www.teclandart.tw/zh/2018ilan/">https://www.teclandart.tw/zh/2018ilan/</a></p>
+   </div> 
+   <br>
+   <br>
+   <div data-role="footer" style="position:fixed;left:0px;bottom:1px;width:100%;z-index: 100">
+      <h4>【限時推出】</h4>
+   </div>
+
+</div>
+
+  <div style="position:fixed;right:10px;bottom:60px;width:40px;opacity:0.5;z-index:130;" id="g_top"><a href="javascript:ScrollTo('top')"><img src="images/uparrow.png" style="width:40px;"/></a></div>
+   <script type="text/javascript">
+ $(function(){
+    $(window).scroll(function () {
+        var scrollVal = $(this).scrollTop();
+        var g_top = document.getElementById('g_top');
+     if(scrollVal < 100)
+     {
+      //g_top.style.display="none" ;
+    }else{
+      g_top.style.display="block" ;
+    }
+    });
+});
+ </script>
+    <script type="text/javascript">
+    var defaultEncoding = 1; //网站编写字体是否繁体，1-繁体，2-简体
+    var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+    var cookieDomain = "http://www.tw77.com.tw/"; //Cookie地址, 一定要设定, 通常为你的网址
+    var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+    var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+    var translateButtonId = "translateLink"; //默认互换id
+    translateInitilization();
+    </script>
+<script type="text/javascript">
+(function () {
+  $(document).on("pageinit", "#home", function () {
+    $('#tapthis').on("tap", function () {
+      $('#status').text('tap狀態');
+    });
+    $('#tapholdthis').on("taphold", function () {
+      $('#status').text('taphold狀態');
+    });
+    $('#swipethis').on("swipe", function () {
+      $('#status').text('swipe狀態');
+    });
+    $('#swipeleftthis').on("swipeleft", function () {
+      $('#status').text('swipeleft狀態');
+    });
+    $('#swiperightthis').on("swiperight", function () {
+      $('#status').text('swiperight狀態');
+    });
+  });
+})();   
+</script> 
+<script>
+function onloadhm() {
+    var id_cnt = document.getElementById("id_cnt").value; 
+    var id_type = document.getElementById("id_type").value;  
+    var id_room = document.getElementById("id_room").value;  
+    var id_low = document.getElementById("id_low").value;  
+    var id_hi = document.getElementById("id_hi").value; 
+
+    var nextrecord = 0 ;
+
+    var obj, dbParam, xmlhttp, myObj, x, txt,title,content,room,price = "";
+    obj = { "table":"hotel", "id":'no' ,"nextrecord":nextrecord ,"perpage":2 ,"id_cnt":id_cnt ,"id_type":id_type ,"id_room":id_room ,"id_low":id_low ,"id_hi":id_hi};
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+        myObj = JSON.parse(this.responseText);
+         for (x in myObj) {
+            title = myObj[x].hotel_title+"("+myObj[x].hotel_county+")" ;
+            content = myObj[x].hotel_content ;
+            room ="房型：" +myObj[x].hotel_room ;
+            price = "價格： NT"+myObj[x].hotel_price +" 起";
+
+            txt ="id: "+ myObj[x].hotel_sn+"  " + "  "+myObj[x].hotel_room;
+
+            var para = document.createElement("div");
+
+            var p1 = document.createElement("div");
+            var ta = document.createTextNode(title);
+            p1.style.fontSize = "22px";            
+            p1.className = "btn1";
+
+            p1.appendChild(ta); 
+            para.appendChild(p1); 
+
+            var p2 = document.createElement("div");
+            var bigImg = document.createElement("img");   //创建一个img元素
+            bigImg.src="http://www.tw77.com.tw/uploads/hotel/"+myObj[x].hotel_sn+".jpg";   //给img元素的src属性赋值
+            //bigImg.width="600";  
+            //bigImg.style.margin = "10px";            
+
+            //para.style.margin = "10px";
+            para.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
+
+            para.style.marginTop = "20px";            
+
+            para.style.color = "blue";            
+            para.style.fontSize = "20px";            
+            para.style.border = "thin dotted red";            
+            para.style.backgroundColor = "#FFFFF0";            
+            para.style.fontWeight  = "bold";            
+            bigImg.className = "img1";
+            p2.className = "img_auto";
+
+            p2.appendChild(bigImg);  
+            para.appendChild(p2); 
+
+            var p3 = document.createElement("div");
+            var tc = document.createTextNode(content);
+            p3.style.marginLeft = "10px";  
+           // p3.style.fontSize = "26px";            
+
+            p3.appendChild(tc); 
+            para.appendChild(p3); 
+
+            var p4 = document.createElement("div");
+            var td = document.createTextNode(room);
+            p4.style.marginLeft = "10px";  
+            //p4.style.fontSize = "26px";            
+
+            p4.appendChild(td); 
+            para.appendChild(p4);  
+
+            var p5 = document.createElement("div");
+            var te = document.createTextNode(price);
+            p5.style.marginLeft = "10px"; 
+            p5.style.marginBottom = "20px"; 
+
+            //p5.style.fontSize = "26px";            
+
+            p5.appendChild(te); 
+            para.appendChild(p5);   
+            
+            var p6 = document.createElement("div");
+                   var  c;
+                  c = document.createElement("button");
+                  c.style.fontSize = "22px";            
+                  c.style.marginBottom = "10px";            
+
+                  c.innerHTML = "詳情"; 
+                  //c.style.margin = "15px";  
+                  c.style.fontWeight  = "bold";  
+                  var addr = "document.location.href='m_index.php?op=hotel_display&hotel_sn="+ myObj[x].hotel_sn+"&hotel_title="+myObj[x].hotel_title+"&hotel_county="+myObj[x].hotel_county+"'";         
+                  //var addr="document.location.href='index.php'";
+         //b.setAttribute("onclick", "nextpage(nextrecord);");
+                  c.setAttribute("onclick",addr); // for FF
+                 // c.onclick = function() {
+                  //nextpage(nextrecord);
+                 // }; // for IE                  
+                  c.className = "btn btn-Info btn-lg btn1";
+
+                  p6.className = "div_auto"; 
+
+            p6.appendChild(c);            
+                  //p6.className = "div_auto"; 
+
+            para.appendChild(p6);  
+                     
+
+                              
+            //var img = document.createElement("img");
+
+　　　　    //img.src = "/images/hotsale1.jpg";
+　　　　    //p.appendChild(img); 
+            var element=document.getElementById("div1");
+            element.appendChild(para);    
+
+                       
+            //document.body.appendChild(para);
+
+           
+
+        }
+
+    }
+
+};
+        //document.getElementById("demo3").innerHTML = "test4";
+
+//xmlhttp.open("POST", "http://www.tw77.com.tw/qinrwd/json_demo_db_post_test.php", true);
+xmlhttp.open("POST", "json_demo_db_post_test.php", true);
+
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+         nextrecord = nextrecord + 2 ;
+
+    var obj, dbParam, xmlhttp, myObj, x, txt,title,content,room,price = "";
+    obj = { "table":"hotel", "id":'1111' ,"nextrecord":nextrecord ,"perpage":2 ,"id_cnt":id_cnt ,"id_type":id_type ,"id_room":id_room ,"id_low":id_low ,"id_hi":id_hi};
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        //myObj = JSON.parse(this.responseText);
+
+        myObj = this.responseText;
+        document.getElementById("div2").innerHTML = "共"+myObj+"筆";
+
+                if (nextrecord< myObj){
+
+                   var  b;
+                   var bdiv = document.createElement("div");
+
+                  (b = document.createElement("button")).innerHTML = "+ 看更多"; 
+                  b.style.fontWeight  = "bold";            
+                  b.style.fontSize = "26px";            
+
+                  b.setAttribute('onclick','nextpage(nextrecord);'); 
+                  
+                  b.onclick = function() {
+                  $(this).remove();
+
+                  nextpage(nextrecord);
+                  };                  
+                  b.className = "btn btn-warning btn-lg btn1";
+                  bdiv.className = "div_auto"; 
+
+                  bdiv.appendChild(b);
+                  var element2=document.getElementById("div2");
+                  element2.appendChild(bdiv);
+             }
+                localStorage.setItem('total', myObj);        
+      }
+    };
+xmlhttp.open("POST", "count_json.php", true);
+
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+
+}
+</script>
+
+<script>
+function nextpage(nextrecord) {
+
+    var id_cnt = document.getElementById("id_cnt").value; 
+    var id_type = document.getElementById("id_type").value;  
+    var id_room = document.getElementById("id_room").value;  
+    var id_low = document.getElementById("id_low").value;  
+    var id_hi = document.getElementById("id_hi").value;    
+     var total=localStorage.getItem('total');
+       //document.getElementById("sp").innerHTML = nextrecord +total;
+
+    var obj, dbParam, xmlhttp, myObj, x, txt,title,content,room,price = "";
+    obj = { "table":"hotel", "id":'1111' ,"nextrecord":nextrecord ,"perpage":2 ,"id_cnt":id_cnt ,"id_type":id_type ,"id_room":id_room ,"id_low":id_low ,"id_hi":id_hi};
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+        myObj = JSON.parse(this.responseText);
+
+        for (x in myObj) {
+            title = myObj[x].hotel_title+"("+myObj[x].hotel_county+")" ;
+            content = myObj[x].hotel_content ;
+            room ="房型：" +myObj[x].hotel_room ;
+            price = "價格： NT"+myObj[x].hotel_price +" 起";
+
+            txt ="id: "+ myObj[x].hotel_sn+"  " + "  "+myObj[x].hotel_room;
+
+            var para = document.createElement("div");
+
+            var p1 = document.createElement("div");
+            var ta = document.createTextNode(title);
+            p1.style.fontSize = "22px";            
+            p1.className = "btn1";
+
+            p1.appendChild(ta); 
+            para.appendChild(p1); 
+
+            var p2 = document.createElement("div");
+            var bigImg = document.createElement("img");   //创建一个img元素
+            bigImg.src="http://www.tw77.com.tw/uploads/hotel/"+myObj[x].hotel_sn+".jpg";   //给img元素的src属性赋值
+            //bigImg.width="600";  
+            //bigImg.style.margin = "10px";            
+
+            //para.style.margin = "10px";
+            para.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
+
+            para.style.marginTop = "20px";            
+
+            para.style.color = "blue";            
+            para.style.fontSize = "20px";            
+            para.style.border = "thin dotted red";            
+            para.style.backgroundColor = "#FFFFF0";            
+            para.style.fontWeight  = "bold";            
+            bigImg.className = "img1";
+            p2.className = "img_auto";
+
+            p2.appendChild(bigImg);  
+            para.appendChild(p2); 
+
+            var p3 = document.createElement("div");
+            var tc = document.createTextNode(content);
+            p3.style.marginLeft = "10px";  
+           // p3.style.fontSize = "26px";            
+
+            p3.appendChild(tc); 
+            para.appendChild(p3); 
+
+            var p4 = document.createElement("div");
+            var td = document.createTextNode(room);
+            p4.style.marginLeft = "10px"; 
+
+            //p4.style.fontSize = "26px";            
+
+            p4.appendChild(td); 
+            para.appendChild(p4);  
+
+            var p5 = document.createElement("div");
+            var te = document.createTextNode(price);
+            p5.style.marginLeft = "10px"; 
+            p5.style.marginBottom = "20px"; 
+
+            //p5.style.fontSize = "26px";            
+
+            p5.appendChild(te); 
+            para.appendChild(p5);   
+            
+            var p6 = document.createElement("div");
+                   var  c;
+                  c = document.createElement("button");
+                  c.style.fontSize = "22px";            
+                  c.style.marginBottom = "10px";            
+
+                  c.innerHTML = "詳情"; 
+                  //c.style.margin = "15px";  
+                  c.style.fontWeight  = "bold";  
+                  var addr = "document.location.href='m_index.php?op=hotel_display&hotel_sn="+ myObj[x].hotel_sn+"&hotel_title="+myObj[x].hotel_title+"&hotel_county="+myObj[x].hotel_county+"'";         
+                  //var addr="document.location.href='index.php'";
+         //b.setAttribute("onclick", "nextpage(nextrecord);");
+                  c.setAttribute("onclick",addr); // for FF
+                 // c.onclick = function() {
+                  //nextpage(nextrecord);
+                 // }; // for IE                  
+                  c.className = "btn btn-Info btn-lg btn1";
+
+                  p6.className = "div_auto"; 
+
+            p6.appendChild(c);            
+                  //p6.className = "div_auto"; 
+
+            para.appendChild(p6);  
+                     
+
+                              
+            //var img = document.createElement("img");
+
+　　　　    //img.src = "/images/hotsale1.jpg";
+　　　　    //p.appendChild(img); 
+            var element=document.getElementById("div1");
+            element.appendChild(para);      
+
+                       
+            //document.body.appendChild(para);
+
+           
+
+        }
+
+        nextrecord = nextrecord + 2 ;
+        if (nextrecord< total){
+                   var  b;
+                   var bdiv = document.createElement("div");
+
+                  (b = document.createElement("button")).innerHTML = "+ 看更多"; 
+                  //b.style.margin = "30px";  
+                  b.style.fontWeight  = "bold";            
+                  b.style.fontSize = "26px";            
+
+         //b.setAttribute("onclick", "nextpage(nextrecord);");
+                  b.setAttribute('onclick','nextpage(nextrecord);'); // for FF
+                  b.onclick = function() {
+                  nextpage(nextrecord);
+                  $(this).remove();
+                  }; // for IE                  
+                  b.className = "btn btn-warning btn-lg btn1";
+                  bdiv.className = "div_auto"; 
+
+                  //var element=document.getElementById("div1");
+                  bdiv.appendChild(b);
+                  var element2=document.getElementById("div2");
+
+                  element2.appendChild(bdiv);           
+                  //document.body.appendChild(b);
+            }else{
+            txt ="到底了!";
+            var para = document.createElement("div");
+            var t = document.createTextNode(txt);
+            para.style.margin = "15px"; 
+            para.style.fontSize = "20px";
+            para.style.fontWeight  = "bold";
+            para.style.color = "red";
+
+            para.appendChild(t);
+            var element2=document.getElementById("div2");
+
+            element2.appendChild(para);
+            }        
+        //document.getElementById("demo3").innerHTML = "test2";
+
+    }
+
+};
+        //document.getElementById("demo3").innerHTML = "test4";
+
+//xmlhttp.open("POST", "http://www.tw77.com.tw/qinrwd/json_demo_db_post_test.php", true);
+xmlhttp.open("POST", "json_demo_db_post_test.php", true);
+
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+
+}
+</script>
+<script>
+  $('#target').click(function() {
+$("#div1").empty();
+$("#div2").empty();
+
+  onloadhm();    
+});
+</script>
+</body>
+</html>

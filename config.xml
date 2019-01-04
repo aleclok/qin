@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+		xmlns:gap   = "http://phonegap.com/ns/1.0"
+		id	    = "com.alec.qin.news"
+		versionCode = "6" 
+		version     = "1.0.6" >
+ 
+	<name>親親旅行社</name>
+ 
+	<description>
+		最新消息
+	</description>
+ 
+	<author href="" email="">
+		alecjen
+	</author>
+	
+	<icon src="icon.png" />
+	
+	<!-- current version of PhoneGap -->
+	
+	<preference name='phonegap-version' value='cli-6.5.0' />
+	
+	<!-- 設定畫面固定為水平(landscape)、垂直(portrait) -->
+	<preference name="orientation" value="all" />
+
+	<!-- 加入其它plugin設定 -->
+	<platform name="android">
+    	<preference name="android-targetSdkVersion" value="26" />
+	</platform>
+	
+</widget>
